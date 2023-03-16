@@ -1,7 +1,7 @@
 {
     "name": "edictus/infoindex",
     "type": "project",
-    "description": "A trading platform.",
+    "description": "A trading information platform for Indices.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
