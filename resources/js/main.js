@@ -1,54 +1,52 @@
 
 import Chart from 'chart.js/auto'
+const backgroundColor = ['salmon', 'turquoise', 'dodgerblue', 'sandybrown', 'mediumorchid', 'thistle']
 
-const backgroundColor = ['salmon', 'turquoise', 'dodgerblue', 'sandybrown', 'mediumorchid', 'thistle'];
-const server = 'localhost:8000';
-const protocol = 'http';
+// ----------------------------------------------------------------------------------------
 
-export default function Indices()
+export function IndicesPerRegion()
 {
     let region = document.getElementById('region').value;
 
-    fetch(`${protocol}://${server}/api/region/${region}`)
+    fetch(`${api}/region/${region}`)
     .then(resp => resp.json())
-    .then(json => IndexDropDown(json))
+    .then(json => FillIndicesCombo(json))
+    .then(index => GetIndexInfo(index))
 }
 
-function IndexDropDown(json)
+function FillIndicesCombo(json)
 {
-    let indexes = document.getElementById('index');
-    indexes.innerHTML = '';
+    let indicesCombo = document.getElementById('index');
+    indicesCombo.innerHTML = '';
 
     for (const key in json) 
     {
         let opt = document.createElement('option');
         opt.value = key;
         opt.innerHTML = json[key];
-        indexes.append(opt);
+        indicesCombo.append(opt);
     }
 
-    GetIndexInfo()
+    return Object.keys(json)[0];
 }
 
-function GetIndexInfo()
+export function GetIndexInfo(index = document.getElementById('index').value)
 {
     for (var i=1; i<99999; i++) window.clearInterval(i);
 
-    let index = document.getElementById('index').value;
-
-    fetch(`${protocol}://${server}/api/stats/${index}`)
+    fetch(`${api}/stats/${index}`)
     .then(resp => resp.json())
     .then(json => Barchart(json))
 
-    fetch(`${protocol}://${server}/api/compo/${index}`)
+    fetch(`${api}/compo/${index}`)
     .then(resp => resp.json())
     .then(json => Piechart(json))
 
-    fetch(`${protocol}://${server}/api/transactions/${index}`)
+    fetch(`${api}/transactions/${index}`)
     .then(resp => resp.json())
     .then(json => Transactions(json))
 
-    fetch(`${protocol}://${server}/api/intraini/${index}`)
+    fetch(`${api}/intraini/${index}`)
     .then(resp => resp.json())
     .then(json => IntraDay(index, json))
 }

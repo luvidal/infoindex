@@ -1,5 +1,6 @@
 import './bootstrap';
 import '../css/app.css'
 
-import Indices from './main';
-window.Indices = Indices;
+import { IndicesPerRegion, GetIndexInfo } from './main';
+window.IndicesPerRegion = IndicesPerRegion;
+window.GetIndexInfo = GetIndexInfo;
