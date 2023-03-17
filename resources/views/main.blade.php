@@ -16,7 +16,7 @@
             {!! section(intrachart(), 'md:col-span-2') !!}
         </div>
         <div class='text-center mt-8 text-slate-500'>
-            Demo built on 2022 by <a class='text-slate-400' href='https://luvidal.edictus.com'>luvidal@edictus.com</a>
+            &#169;2022 by <a class='text-slate-400' href='https://luvidal.edictus.com'>luvidal<span class='text-slate-500'>@edictus.com</span></a>
         </div>
     </body>
 </html>
