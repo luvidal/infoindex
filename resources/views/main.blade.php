@@ -3,9 +3,9 @@
     <head>
         <meta charset='utf-8'/>
         <meta name='viewport' content='width=device-width, initial-scale=1'/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <title>InfoIndex</title>
-        @vite(['resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script> const api = "{{ env('APP_URL') }}/api"; </script>
     </head>
     <body class='text-slate-200 bg-slate-900 p-2 sm:p-4 md:p-8' onload='IndicesPerRegion()'>
         <div class='grid md:grid-cols-2 xl:grid-cols-3  gap-2 sm:gap-4 md:gap-8'>
@@ -20,9 +20,7 @@
         </div>
     </body>
 </html>
-<script>
-    const api = "{{ env('APP_URL') }}/api";
-</script>
+
 <?php
 
     function section($inner = '', $class = '')
