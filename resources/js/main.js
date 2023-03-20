@@ -4,6 +4,13 @@ const backgroundColor = ['salmon', 'turquoise', 'dodgerblue', 'sandybrown', 'med
 
 // ----------------------------------------------------------------------------------------
 
+export function ExpandCanvas(id) 
+{
+    const canvas = document.getElementById(id);
+    canvas.style.width  = '100%';
+    canvas.style.height = '100%';
+}
+
 export function IndicesPerRegion()
 {
     let region = document.getElementById('region').value;

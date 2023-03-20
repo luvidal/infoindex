@@ -45,24 +45,24 @@ Route::get('/transactions/{id}', function()
     function weight() { return rand(2, 12); }
 
     $stocks = [];
-    $stocks[] = (object)[ 'symbol' => 'MSFT', 'name' => 'Microsoft Corp', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'AAPL', 'name' => 'Apple Inc',     'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'AMZN', 'name' => 'Amazon',    'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'META', 'name' => 'Meta Platf',      'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'BRK.B','name' => 'Berkshire', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'TSLA', 'name' => 'Tesla Inc',     'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'AAL', 'name' => 'American Airl',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'ABNB', 'name' => 'Airbnb Inc',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'ABT', 'name' => 'Abbott Labs',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'ADBE', 'name' => 'Adobe Inc',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'BA', 'name' => 'Boeing Co',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'C', 'name' => 'Citigroup Inc',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'F', 'name' => 'Ford Motor Co',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'FDX', 'name' => 'Fedex Co',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'H', 'name' => 'Hyatt Hotels',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'KO', 'name' => 'Coca-Cola Co',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'NKE', 'name' => 'Nike Inc',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
-    $stocks[] = (object)[ 'symbol' => 'PFE', 'name' => 'Pfizer Inc',  'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'MSFT', 'name' => 'Microsoft Corp', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'AAPL', 'name' => 'Apple Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'AMZN', 'name' => 'Amazon', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'META', 'name' => 'Meta Platf', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'BRK.B','name' => 'Berkshire', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'TSLA', 'name' => 'Tesla Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'AAL', 'name' => 'American Airl', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'ABNB', 'name' => 'Airbnb Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'ABT', 'name' => 'Abbott Labs', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'ADBE', 'name' => 'Adobe Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'BA', 'name' => 'Boeing Co', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'C', 'name' => 'Citigroup Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'F', 'name' => 'Ford Motor Co', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'FDX', 'name' => 'Fedex Co', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'H', 'name' => 'Hyatt Hotels', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'KO', 'name' => 'Coca-Cola Co', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'NKE', 'name' => 'Nike Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
+    $stocks[] = [ 'symbol' => 'PFE', 'name' => 'Pfizer Inc', 'weight' => weight(), 'price' => price(), 'delta' => delta(), 'sign' => rand(0,1) ];
 
     function cmp($a, $b) { return ($a->weight < $b->weight);}
     usort($stocks, 'cmp');
