@@ -56,16 +56,19 @@ export function GetIndexInfo(index = document.getElementById('index').value)
     fetch(`${api}/intraini/${index}`)
     .then(resp => resp.json())
     .then(json => IntraDay(index, json))
+
+    fetch(`${api}/maps/${index}`)
+    .then(resp => resp.json())
+    .then(json => DrawMap(json))
 }
 
 // ----------------------------------------------------------------------------------------
 
-
 const barchart = new Chart (document.getElementById('statscanvas'),
 {
     type:'bar',
-    data:{ labels:[], datasets:[{ data:[], backgroundColor  }] },
-    options:{ scales:{ y:{ beginAtZero:true, max:100 } }, plugins:{ legend:{ display:false }} },
+    data:{ labels:[], datasets:[{ data:[], backgroundColor }] },
+    options:{ scales:{ y:{ beginAtZero:true, max:100 } }, datasets:{ bar:{ borderRadius:8, barThickness:16, borderSkipped:false } }, plugins:{ legend:{ display:false }} },
 })
 
 function Barchart(json)
@@ -81,7 +84,7 @@ function Barchart(json)
 
     setInterval( () => 
     {
-       BarValues(data);
+        BarValues(data);
         barchart.data.datasets[0].data = data;
         barchart.update();
 
@@ -106,7 +109,7 @@ const piechart = new Chart (document.getElementById('compocanvas'),
 {
     type:'doughnut',
     data:{ labels:[], datasets:[{ data:[], backgroundColor }] },
-    options:{ borderWidth:0, plugins:{ legend:{ position:'right' }} }
+    options:{ borderWidth:0, datasets:{ doughnut:{ cutout:'80%', radius:'80%' } }, plugins:{ legend:{ position:'bottom', labels:{ boxWidth:8, boxHeight:8, color:'#64748b' } } } }
 })
 
 function Piechart(json)
@@ -240,4 +243,36 @@ function IntraValues(labels, data)
     let newT = new Date(new Date('1970/01/01 ' + time).getTime() + mins * 60000).toLocaleTimeString('en-UK', { hour:'2-digit', minute:'2-digit', hour12:false });
     labels.push(newT);
     labels.shift();
+}
+
+
+let globalmapobj
+
+function DrawMap(json)
+{
+    if (typeof globalmapobj != 'undefined')
+    {
+        globalmapobj.destroy()
+        document.getElementById('map').innerHTML = ''
+    }
+
+    globalmapobj = new jsVectorMap(
+    {
+        selector:document.getElementById('map'),
+        zoomButtons:false,
+        selectedRegions:RemoveRandomEls(json.regions),
+        map:json.map,
+        regionStyle:{ initial:{ fill:'turquoise'  }, selected:{ fill:'salmon'} },
+    })
+}
+
+
+function RemoveRandomEls(arr)
+{
+    let aux = arr;
+    let n = aux.length;
+    for (let i=0; i<n/2; i++)
+        aux.sort(function() { return 0.5 - Math.random();}).pop();
+
+    return aux;
 }
