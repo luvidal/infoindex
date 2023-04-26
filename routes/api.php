@@ -109,6 +109,7 @@ Route::get('/region/{region}', function($region)
     return compact('US', 'EU', 'LA', 'EA')[$region];
 });
 
+
 Route::get('/maps/{region}', function($index) // https://jvectormap.com/maps
 {
     switch($index)
